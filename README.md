@@ -1,15 +1,13 @@
-# MikadoGraph
+# Mikado Graph Generator
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/mikado_graph`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Welcome to a DSL for creating Mikado Graphs using *GraphViz*.
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'mikado_graph'
+gem "mikado_graph"
 ```
 
 And then execute:
@@ -20,9 +18,44 @@ Or install it yourself as:
 
     $ gem install mikado_graph
 
+### Prerequisites
+
+Ensure you have *GraphViz* installed. On macOS you can install it using Homebrew with the following command:
+
+```bash
+brew install graphviz
+```
+
 ## Usage
 
-TODO: Write usage instructions here
+You can use this gem's DSL in the following way to create a Mikado Graph generator definition file:
+
+```ruby
+require "mikado_graph"
+
+MikadoGraph::Generator.generate do
+  state("State A").depends_on do
+    state("State B").depends_on do
+      state("State D")
+      state("State E")
+    end
+    state("State C").depends_on do
+      state("State F")
+      state("State G")
+    end
+  end
+end
+```
+
+You can then execute this file in the terminal using:
+
+```bash
+ruby multi_level_mikado_graph_generator.rb | dot -Tpng -o img/multi_level_mikado_graph.png
+```
+
+This will utilize the *GraphViz* `dot` command to create this PNG output of the above Mikado Graph generator definition:
+
+![Multi-Level Mikado Graph](https://github.com/snasirca/mikado_graph_generator/blob/master/img/multi_level_mikado_graph.png)
 
 ## Development
 
@@ -32,10 +65,8 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/Shahriyar Nasir/mikado_graph. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
-
+Bug reports and pull requests are welcome on GitHub at https://github.com/snasirca/mikado_graph_generator. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-
