@@ -1,3 +1,5 @@
+require "graphviz"
+
 module MikadoGraph
   class Generator
     attr_accessor :dependencies
