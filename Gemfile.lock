@@ -21,6 +21,7 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.5.0)
     rspec-support (3.5.0)
+    ruby-graphviz (1.2.2)
 
 PLATFORMS
   ruby
@@ -30,6 +31,7 @@ DEPENDENCIES
   mikado_graph_generator!
   rake (~> 10.0)
   rspec (~> 3.0)
+  ruby-graphviz
 
 BUNDLED WITH
    1.14.3
