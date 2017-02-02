@@ -2,7 +2,7 @@ require "graphviz"
 
 module MikadoGraph
   class Generator
-    attr_accessor :dependencies
+    attr_reader :dependencies, :graph
 
     def self.define(&block)
       generator_instance = new
@@ -10,45 +10,39 @@ module MikadoGraph
       generator_instance
     end
 
-    def initialize
-      @dependencies = Dependencies.new
-    end
-
     def generate
-      convert(dependencies.dependent_states)
+      add_states_to_graph(dependencies.dependent_states)
+      graph.output(dot: nil)
     end
 
     private
 
-    def convert(states)
-      convert_header
-      convert_states_and_dependencies(states)
-      convert_footer
+    def initialize
+      @dependencies = Dependencies.new
+      initialize_graph
     end
 
-    def convert_header
-      puts "digraph {"
-      puts "  node [shape=box];"
-      puts "  rankdir=\"LR\";"
+    def initialize_graph
+      @graph = GraphViz.new(nil)
+      @graph[:rankdir] = "LR"
+      @graph.node[:shape] = "box"
     end
 
-    def convert_states_and_dependencies(states)
-      states.each { |state| convert_dependencies(state) }
+    def add_states_to_graph(states)
+      states.each { |state| add_state_dependencies(state) }
     end
 
-    def convert_dependencies(state)
+    def add_state_dependencies(state)
       state.dependent_states.each do |dependent_state|
-        convert_dependency(state, dependent_state)
-        convert_dependencies(dependent_state)
+        add_dependency(state, dependent_state)
+        add_state_dependencies(dependent_state)
       end
     end
 
-    def convert_dependency(state, dependent_state)
-      puts "  \"#{dependent_state.name}\" -> \"#{state.name}\";"
-    end
-
-    def convert_footer
-      puts "}"
+    def add_dependency(state, dependent_state)
+      state_node = graph.add_nodes(state.name)
+      dependent_state_node = graph.add_nodes(dependent_state.name)
+      graph.add_edges(dependent_state_node, state_node)
     end
   end
 end
