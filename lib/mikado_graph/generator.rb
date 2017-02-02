@@ -1,10 +1,18 @@
 module MikadoGraph
-  module Generator
-    extend self
+  class Generator
+    attr_accessor :dependencies
 
-    def generate(&block)
-      dependencies = Dependencies.new
-      dependencies.instance_eval(&block)
+    def self.define(&block)
+      generator_instance = new
+      generator_instance.dependencies.instance_eval(&block)
+      generator_instance
+    end
+
+    def initialize
+      @dependencies = Dependencies.new
+    end
+
+    def generate
       convert(dependencies.dependent_states)
     end
 
