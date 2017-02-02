@@ -55,7 +55,7 @@ ruby example_usage.rb
 
 This will utilize the *GraphViz* `dot` command to create this PNG output of the above Mikado Graph generator definition:
 
-![Multi-Level Mikado Graph](https://github.com/snasirca/mikado_graph_generator/blob/master/img/multi_level_mikado_graph.png)
+![Example Usage](https://github.com/snasirca/mikado_graph_generator/blob/master/img/example_usage.png)
 
 NOTE: If you don't provide any parameters to `generate`, it'll default to a `dot` output in the STDOUT.
 
