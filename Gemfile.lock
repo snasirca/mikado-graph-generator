@@ -31,7 +31,7 @@ DEPENDENCIES
   mikado_graph_generator!
   rake (~> 10.0)
   rspec (~> 3.0)
-  ruby-graphviz
+  ruby-graphviz (~> 1.2)
 
 BUNDLED WITH
    1.14.3
