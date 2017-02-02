@@ -10,9 +10,11 @@ module MikadoGraph
       generator_instance
     end
 
-    def generate
+    def generate(format = "dot", path = nil)
       add_states_to_graph(dependencies.dependent_states)
-      graph.output(dot: nil)
+      output_options = {}
+      output_options[format] = path
+      graph.output(output_options)
     end
 
     private
