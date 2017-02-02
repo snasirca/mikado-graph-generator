@@ -33,29 +33,31 @@ You can use this gem's DSL in the following way to create a Mikado Graph generat
 ```ruby
 require "mikado_graph"
 
-MikadoGraph::Generator.generate do
-  state("State A").depends_on do
-    state("State B").depends_on do
+MikadoGraph::Generator.define do
+  state("State A").depends_on {
+    state("State B").depends_on {
       state("State D")
       state("State E")
-    end
-    state("State C").depends_on do
+    }
+    state("State C").depends_on {
       state("State F")
       state("State G")
-    end
-  end
-end
+    }
+  }
+end.generate("png", "img/example_usage.png") # generate takes GraphViz format and output path
 ```
 
-You can then execute this file in the terminal using:
+Save this file to `example_usage.rb` and then you can then execute this file in the terminal using:
 
 ```bash
-ruby multi_level_mikado_graph_generator.rb | dot -Tpng -o img/multi_level_mikado_graph.png
+ruby example_usage.rb
 ```
 
 This will utilize the *GraphViz* `dot` command to create this PNG output of the above Mikado Graph generator definition:
 
 ![Multi-Level Mikado Graph](https://github.com/snasirca/mikado_graph_generator/blob/master/img/multi_level_mikado_graph.png)
+
+NOTE: If you don't provide any parameters to `generate`, it'll default to a `dot` output in the STDOUT.
 
 ## Development
 
