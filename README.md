@@ -1,4 +1,4 @@
-# Mikado Graph Generator
+# Mikado Graph Generator [![Build Status](https://travis-ci.org/snasirca/mikado_graph_generator.svg?branch=master)](https://travis-ci.org/snasirca/mikado_graph_generator) [![Code Climate](https://codeclimate.com/github/snasirca/mikado_graph_generator/badges/gpa.svg)](https://codeclimate.com/github/snasirca/mikado_graph_generator)
 
 Welcome to a DSL for creating Mikado Graphs using *GraphViz*.
 
