@@ -1,0 +1,373 @@
+#
+# Enforce all of these cops...
+#
+# Note: cops are ordered alphabetically.
+#
+
+require: rubocop-rspec
+
+#
+# This cop checks whether the end keywords are aligned properly.
+#
+#   # good
+#   variable = if true
+#   end
+#
+Lint/EndAlignment:
+  EnforcedStyleAlignWith: variable
+
+#
+# This cop looks for error classes inheriting from Exception and its standard library subclasses,
+# excluding subclasses of StandardError.
+#
+Lint/InheritException:
+  EnforcedStyle: runtime_error
+
+#
+# This cop checks if the length of a block exceeds some maximum value. Comment lines can optionally be ignored.
+# The maximum allowed length is configurable. The cop can be configured to ignore blocks passed to certain methods.
+#
+Metrics/BlockLength:
+  ExcludedMethods:
+    - describe
+
+#
+# This cop checks the length of lines in the source code.
+#
+Metrics/LineLength:
+  Max: 140
+
+#
+# This cop checks if the length of a method exceeds some maximum value.
+#
+Metrics/MethodLength:
+  Max: 15
+
+#
+# This cop is used to identify usages of select.first, select.last, find_all.first, and find_all.last and
+# change them to use detect instead.
+#
+# ActiveRecord compatibility: ActiveRecord does not implement a detect method and find has its own meaning.
+# Correcting ActiveRecord methods with this cop should be considered unsafe.
+#
+#   # bad
+#   [].select { |item| true }.first
+#   [].select { |item| true }.last
+#   [].find_all { |item| true }.first
+#   [].find_all { |item| true }.last
+#
+#   # good
+#   [].detect { |item| true }
+#   [].reverse.detect { |item| true }
+#
+Performance/Detect:
+  AutoCorrect: false
+
+#
+# This cop checks dynamic find_by_* methods. Use find_by instead of dynamic method.
+# See. https://github.com/bbatsov/rails-style-guide#find_by
+#
+# NOTE: Do not autocorrect since we have non-dynamic finders that follow the dynamic finder naming convention
+#
+Rails/DynamicFindBy:
+  AutoCorrect: false
+
+#
+# Checks for long examples.
+#
+RSpec/ExampleLength:
+  Max: 20
+
+#
+# This cop checks for consistent style when specifying RSpec hooks which run for each example.
+#
+#   # bad
+#   before(:each) do
+#     ...
+#   end
+#
+#   # bad
+#   before(:example) do
+#     ...
+#   end
+#
+#   # good
+#   before do
+#     ...
+#   end
+#
+RSpec/HookArgument:
+  EnforcedStyle: implicit
+
+#
+# Checks if examples contain too many 'expect' calls.
+#
+RSpec/MultipleExpectations:
+  Max: 3
+
+#
+# Checks for consistent method usage for negating expectations.
+#
+RSpec/NotToNot:
+  EnforcedStyle: to_not
+
+#
+# Check that the keys, separators, and values of a multi-line hash literal are aligned according
+# to configuration. With 'key' everything is left aligned.
+#
+Style/AlignHash:
+  EnforcedHashRocketStyle: key
+  EnforcedColonStyle: key
+  EnforcedLastArgumentHashStyle: always_ignore
+
+#
+# Here we check if the parameters on a multi-line method call or definition are aligned.
+#
+Style/AlignParameters:
+  EnforcedStyle: with_fixed_indentation
+
+#
+# This cop checks how the 'whens' of a case expression are indented in relation to its 'case' or 'end' keyword.
+#
+Style/CaseIndentation:
+  EnforcedStyle: end
+  IndentOneStep: true
+
+#
+# This cop checks for the formatting of empty method definitions. By default it enforces empty method definitions
+# to go on a single line (compact style).
+#
+Style/EmptyMethod:
+  Exclude:
+    - 'db/migrate/*'
+
+#
+# This cop checks for a line break before the first element in a multi-line hash.
+#
+#   # bad
+#   { a: 1,
+#     b: 2}
+#
+#   # good
+#   {
+#     a: 1,
+#     b: 2 }
+#
+Style/FirstHashElementLineBreak:
+  Enabled: true
+
+#
+# This cop checks for a line break before the first argument in a multi-line method call.
+#
+#   # bad
+#   method(foo, bar,
+#     baz)
+#
+#   # good
+#   method(
+#     foo, bar,
+#     baz)
+#
+#   # ignored
+#   method foo, bar,
+#     baz
+#
+Style/FirstMethodArgumentLineBreak:
+  Enabled: true
+
+# This cop checks the indentation of the first parameter in a method call. Parameters after the first one are checked by Style/AlignParameters, not by this cop.
+#
+#   # bad
+#   some_method(
+#   first_param,
+#   second_param)
+#
+#   # good
+#   some_method(
+#     first_param,
+#   second_param)
+#
+Style/FirstParameterIndentation:
+  EnforcedStyle: consistent
+
+#
+# This cop checks the indentation of the first element in an array literal where the opening bracket and the
+# first element are on separate lines.
+#
+#   # consistent
+#   array = [
+#     :value
+#   ]
+#   and_in_a_method_call([
+#     :no_difference
+#   ])
+#
+Style/IndentArray:
+  EnforcedStyle: consistent
+
+#
+# This cops checks the indentation of the first key in a hash literal where the opening brace and the first key
+# are on separate lines.
+#
+#   # consistent
+#   hash = {
+#     key: :value
+#   }
+#   and_in_a_method_call({
+#     no: :difference
+#   })
+#
+Style/IndentHash:
+  EnforcedStyle: consistent
+
+#
+# This cop checks for uses of the lambda literal syntax.
+#
+#   # literal
+#   f = ->(x) { x }
+#   f = ->(x) do
+#         x
+#       end
+#
+Style/Lambda:
+  EnforcedStyle: literal
+
+#
+# This cop checks presence of parentheses in method calls containing parameters. As in popular Ruby's frameworks a lot
+# of methods should always be called without parentheses, users can ignore them by passing their names to IgnoredMethods
+# option.
+#
+#   # bad
+#   array.delete e
+#
+#   # good
+#   array.delete(e)
+#
+#   # good if `puts` is listed in IgnoredMethods
+#   puts 'test'
+#
+Style/MethodCallWithArgsParentheses:
+  Enabled: true
+  IgnoredMethods:
+    - add_development_dependency
+    - after_initialize
+    - assert
+    - assert_contents
+    - assert_empty
+    - assert_equal
+    - assert_held
+    - assert_nil
+    - assert_presence_of
+    - assert_raises
+    - assert_should_strip_whitespace
+    - assert_time_within
+    - attr_accessor
+    - attr_reader
+    - attr_writer
+    - attribute
+    - autocomplete_for
+    - before_action
+    - belongs_to
+    - column
+    - delegate
+    - describe
+    - extend
+    - field
+    - gem
+    - goto
+    - has_many
+    - in_line_ajax_action
+    - include
+    - it
+    - it_behaves_like
+    - link
+    - puts
+    - raise
+    - redefine_const
+    - redirect_to
+    - render
+    - require
+    - require_relative
+    - ruby
+    - scope
+    - should
+    - source
+    - task
+    - to
+    - to_not
+    - validate
+    - validates
+    - validates_numericality_of
+    - validates_presence_of
+    - within
+
+#
+# This cop checks that closing brace of a multi-line method call must be on the line after the last
+# argument of the call.
+#
+#   # symmetrical: bad
+#   # new_line: good
+#   # same_line: bad
+#   foo(a,
+#     b
+#   )
+#
+#   # symmetrical: bad
+#   # new_line: bad
+#   # same_line: good
+#   foo(
+#     a,
+#     b)
+#
+#   # symmetrical: good
+#   # new_line: bad
+#   # same_line: good
+#   foo(a,
+#     b)
+#
+#   # symmetrical: good
+#   # new_line: good
+#   # same_line: bad
+#   foo(
+#     a,
+#     b
+#   )
+#
+Style/MultilineMethodCallBraceLayout:
+  EnforcedStyle: new_line
+
+#
+# This cop checks the indentation of the method name part in method calls that span more than one line.
+#
+#   # good
+#   while a
+#       .b
+#     something
+#   end
+#
+Style/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+
+#
+# This cop looks for uses of Perl-style global variables.
+#
+Style/SpecialGlobalVars:
+  EnforcedStyle: use_english_names
+
+#
+# Checks if uses of quotes match the configured preference.
+#
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+#
+# This cop makes sure that all numbered variables use snake_case for their numbering.
+#
+#   # bad
+#   variable1 = 1
+#
+#   # good
+#   variable_1 = 1
+#
+Style/VariableNumber:
+  EnforcedStyle: snake_case
