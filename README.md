@@ -34,16 +34,16 @@ You can use this gem's DSL in the following way to create a Mikado Graph generat
 require "mikado_graph"
 
 MikadoGraph::Generator.define do
-  state("State A").depends_on {
-    state("State B").depends_on {
+  state("State A").depends_on do
+    state("State B").depends_on do
       state("State D")
       state("State E")
-    }
-    state("State C").depends_on {
+    end
+    state("State C").depends_on do
       state("State F")
       state("State G")
-    }
-  }
+    end
+  end
 end.generate("png", "img/example_usage.png") # generate takes GraphViz format and output path
 ```
 
