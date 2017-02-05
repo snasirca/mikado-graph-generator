@@ -1,0 +1,10 @@
+#
+# The Rubocop configuration for PackManager.
+#
+
+#AllCops:
+#  Exclude:
+
+inherit_from:
+  - .rubocop.disabled.yml
+  - .rubocop.enabled.yml
