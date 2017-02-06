@@ -1,10 +1,9 @@
-require "rspec"
 require "open3"
 
-describe "mikado graph generator" do
+RSpec.describe "mikado graph generator" do
   describe "when converting to graphviz" do
     it "converts single level of dependencies" do
-      output, status = run_tool_using("spec/fixtures/single_level_mikado_graph_generator.rb")
+      output, status = run_tool_using("single_level_mikado_graph_generator.rb")
 
       did_not_error(status)
       expect(output).to include(
@@ -16,7 +15,7 @@ describe "mikado graph generator" do
     end
 
     it "converts multiple levels of dependencies" do
-      output, status = run_tool_using("spec/fixtures/multi_level_mikado_graph_generator.rb")
+      output, status = run_tool_using("multi_level_mikado_graph_generator.rb")
 
       did_not_error(status)
       expect(output).to include(
@@ -34,8 +33,8 @@ describe "mikado graph generator" do
 
   private
 
-  def run_tool_using(cmd)
-    Open3.capture2(cmd)
+  def run_tool_using(mikado_graph_generator_definition)
+    Open3.capture2("spec/support/fixtures/#{mikado_graph_generator_definition}")
   end
 
   def did_not_error(status)
