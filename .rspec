@@ -1,2 +1,4 @@
 --format documentation
 --color
+--require support/spec_helper
+--order random
