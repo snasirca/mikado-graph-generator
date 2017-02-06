@@ -273,6 +273,7 @@ Style/MethodCallWithArgsParentheses:
     - describe
     - extend
     - field
+    - guard
     - gem
     - goto
     - has_many

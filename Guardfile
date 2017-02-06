@@ -16,12 +16,12 @@
 # and, you'll have to watch "config/Guardfile" instead of "Guardfile"
 
 guard :bundler do
-  require 'guard/bundler'
-  require 'guard/bundler/verify'
+  require "guard/bundler"
+  require "guard/bundler/verify"
   helper = Guard::Bundler::Verify.new
 
-  files = ['Gemfile']
-  files += Dir['*.gemspec'] if files.any? { |f| helper.uses_gemspec?(f) }
+  files = ["Gemfile"]
+  files += Dir["*.gemspec"] if files.any? { |f| helper.uses_gemspec?(f) }
 
   # Assume files are symlinked from somewhere
   files.each { |file| watch(helper.real_path(file)) }
@@ -36,8 +36,8 @@ end
 #  * zeus: 'zeus rspec' (requires the server to be started separately)
 #  * 'just' rspec: 'rspec'
 
-guard :rspec, cmd: 'bundle exec rspec' do
-  require 'guard/rspec/dsl'
+guard :rspec, cmd: "bundle exec rspec" do
+  require "guard/rspec/dsl"
   dsl = Guard::RSpec::Dsl.new(self)
 
   # Feel free to open issues for suggestions and improvements
@@ -51,6 +51,6 @@ guard :rspec, cmd: 'bundle exec rspec' do
   watch(/.+\.rb$/)
 end
 
-guard :rubocop, cli: ['-S', '-D'] do
+guard :rubocop, cli: ["-S", "-D"] do
   watch(/.+\.rb$/)
 end
