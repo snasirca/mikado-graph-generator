@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    mikado_graph_generator (0.2.3)
+    mikado_graph_generator (0.3.0)
 
 GEM
   remote: https://rubygems.org/
