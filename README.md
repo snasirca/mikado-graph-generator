@@ -44,20 +44,49 @@ MikadoGraph::Generator.define do
       state("State G")
     end
   end
-end.generate("png", "img/example_usage.png") # generate takes GraphViz format and output path
+end.generate("png", "img/example_usage_vertical.png") # generate takes GraphViz format and output path
 ```
 
-Save this file to `example_usage.rb` and then you can then execute this file in the terminal using:
+Save this file to `example_usage_vertical.rb` and then you can then execute this file in the terminal using:
 
 ```bash
-ruby example_usage.rb
+ruby example_usage_vertical.rb
 ```
 
-This will utilize the *GraphViz* `dot` command to create this PNG output of the above Mikado Graph generator definition:
+This will utilize *GraphViz* to create this PNG output of the above Mikado Graph generator definition:
 
-![Example Usage](https://github.com/snasirca/mikado_graph_generator/blob/master/img/example_usage.png)
+![Example Usage Vertical](https://github.com/snasirca/mikado_graph_generator/blob/master/img/example_usage_vertical.png)
 
 NOTE: If you don't provide any parameters to `generate`, it'll default to a `dot` output in the STDOUT.
+
+If you want to instead do a horizontal orientation of your graph, simply provide the direction flag to `#generate` like so:
+
+```ruby
+generate(direction: :horizontal)
+```
+
+Here is an example usage:
+
+```ruby
+require "mikado_graph"
+
+MikadoGraph::Generator.define do
+  state("State A").depends_on do
+    state("State B").depends_on do
+      state("State D")
+      state("State E")
+    end
+    state("State C").depends_on do
+      state("State F")
+      state("State G")
+    end
+  end
+end.generate(format: "png", path: "img/example_usage_horizontal.png", direction: :horizontal)
+```
+
+This will generate this graph:
+
+![Example Usage Horizontal](https://github.com/snasirca/mikado_graph_generator/blob/master/img/example_usage_horizontal.png)
 
 ## Development
 

@@ -10,10 +10,10 @@ module MikadoGraph
       generator_instance
     end
 
-    def generate(format = "dot", path = nil)
+    def generate(options = {})
       add_states_to_graph(dependencies.dependent_states)
-      output_options = {}
-      output_options[format] = path
+      arrange_graph_direction(options)
+      output_options = build_output_options(options)
       graph.output(output_options)
     end
 
@@ -26,7 +26,6 @@ module MikadoGraph
 
     def initialize_graph
       @graph = GraphViz.new(nil)
-      @graph[:rankdir] = "LR"
       @graph.node[:shape] = "box"
     end
 
@@ -45,6 +44,17 @@ module MikadoGraph
       state_node = graph.add_nodes(state.name)
       dependent_state_node = graph.add_nodes(dependent_state.name)
       graph.add_edges(dependent_state_node, state_node)
+    end
+
+    def arrange_graph_direction(options)
+      direction = options.fetch(:direction, :vertical)
+      graph[:rankdir] = "LR" if direction == :horizontal
+    end
+
+    def build_output_options(options)
+      output_options = {}
+      output_options[options.fetch(:format, "dot")] = options.fetch(:path, nil)
+      output_options
     end
   end
 end
