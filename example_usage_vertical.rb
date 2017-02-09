@@ -11,4 +11,4 @@ MikadoGraph::Generator.define do
       state("State G")
     end
   end
-end.generate("png", "img/example_usage.png")
+end.generate(format: "png", path: "img/example_usage_vertical.png")

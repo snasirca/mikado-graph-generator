@@ -8,6 +8,17 @@ RSpec.describe "mikado graph generator" do
       did_not_error(status)
       expect(output).to include(
         "shape=box",
+        '"State B" -> "State A"',
+        '"State C" -> "State A"'
+      )
+    end
+
+    it "converts into a horizontal graph" do
+      output, status = run_tool_using("horizontal_mikado_graph_generator.rb")
+
+      did_not_error(status)
+      expect(output).to include(
+        "shape=box",
         "rankdir=LR",
         '"State B" -> "State A"',
         '"State C" -> "State A"'
@@ -20,7 +31,6 @@ RSpec.describe "mikado graph generator" do
       did_not_error(status)
       expect(output).to include(
         "shape=box",
-        "rankdir=LR",
         '"State B" -> "State A"',
         '"State D" -> "State B"',
         '"State E" -> "State B"',
