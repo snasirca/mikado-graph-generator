@@ -115,7 +115,7 @@ RSpec/NotToNot:
 # Check that the keys, separators, and values of a multi-line hash literal are aligned according
 # to configuration. With 'key' everything is left aligned.
 #
-Style/AlignHash:
+Layout/AlignHash:
   EnforcedHashRocketStyle: key
   EnforcedColonStyle: key
   EnforcedLastArgumentHashStyle: always_ignore
@@ -123,13 +123,13 @@ Style/AlignHash:
 #
 # Here we check if the parameters on a multi-line method call or definition are aligned.
 #
-Style/AlignParameters:
+Layout/AlignParameters:
   EnforcedStyle: with_fixed_indentation
 
 #
 # This cop checks how the 'whens' of a case expression are indented in relation to its 'case' or 'end' keyword.
 #
-Style/CaseIndentation:
+Layout/CaseIndentation:
   EnforcedStyle: end
   IndentOneStep: true
 
@@ -153,7 +153,7 @@ Style/EmptyMethod:
 #     a: 1,
 #     b: 2 }
 #
-Style/FirstHashElementLineBreak:
+Layout/FirstHashElementLineBreak:
   Enabled: true
 
 #
@@ -172,7 +172,7 @@ Style/FirstHashElementLineBreak:
 #   method foo, bar,
 #     baz
 #
-Style/FirstMethodArgumentLineBreak:
+Layout/FirstMethodArgumentLineBreak:
   Enabled: true
 
 # This cop checks the indentation of the first parameter in a method call. Parameters after the first one are checked by Style/AlignParameters, not by this cop.
@@ -187,7 +187,7 @@ Style/FirstMethodArgumentLineBreak:
 #     first_param,
 #   second_param)
 #
-Style/FirstParameterIndentation:
+Layout/FirstParameterIndentation:
   EnforcedStyle: consistent
 
 #
@@ -202,7 +202,7 @@ Style/FirstParameterIndentation:
 #     :no_difference
 #   ])
 #
-Style/IndentArray:
+Layout/IndentArray:
   EnforcedStyle: consistent
 
 #
@@ -217,7 +217,7 @@ Style/IndentArray:
 #     no: :difference
 #   })
 #
-Style/IndentHash:
+Layout/IndentHash:
   EnforcedStyle: consistent
 
 #
@@ -334,7 +334,7 @@ Style/MethodCallWithArgsParentheses:
 #     b
 #   )
 #
-Style/MultilineMethodCallBraceLayout:
+Layout/MultilineMethodCallBraceLayout:
   EnforcedStyle: new_line
 
 #
@@ -346,7 +346,7 @@ Style/MultilineMethodCallBraceLayout:
 #     something
 #   end
 #
-Style/MultilineMethodCallIndentation:
+Layout/MultilineMethodCallIndentation:
   EnforcedStyle: indented
 
 #
@@ -370,5 +370,5 @@ Style/StringLiterals:
 #   # good
 #   variable_1 = 1
 #
-Style/VariableNumber:
+Naming/VariableNumber:
   EnforcedStyle: snake_case
