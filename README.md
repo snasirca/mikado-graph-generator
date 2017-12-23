@@ -20,7 +20,7 @@ Or install it yourself as:
 
 ### Prerequisites
 
-Ensure you have *GraphViz* installed. On macOS you can install it using Homebrew with the following command:
+Ensure you have *GraphViz* installed. On MacOS you can install it using Homebrew with the following command:
 
 ```bash
 brew install graphviz
@@ -34,18 +34,21 @@ You can use this gem's DSL in the following way to create a Mikado Graph generat
 require "mikado_graph"
 
 MikadoGraph::Generator.define do
-  state("State A").depends_on do
-    state("State B").depends_on do
+  state("State A").with_prerequisites do
+    state("State B").with_prerequisites do
       state("State D")
       state("State E")
     end
-    state("State C").depends_on do
+    state("State C").with_prerequisites do
       state("State F")
       state("State G")
     end
   end
 end.generate("png", "img/example_usage_vertical.png") # generate takes GraphViz format and output path
 ```
+
+> You can also use the shorthand `with_prereqs` instead of `with_prerequisites` for defining prerequisite 
+dependencies between states.
 
 Save this file to `example_usage_vertical.rb` and then you can then execute this file in the terminal using:
 
@@ -71,12 +74,12 @@ Here is an example usage:
 require "mikado_graph"
 
 MikadoGraph::Generator.define do
-  state("State A").depends_on do
-    state("State B").depends_on do
+  state("State A").with_prerequisites do
+    state("State B").with_prerequisites do
       state("State D")
       state("State E")
     end
-    state("State C").depends_on do
+    state("State C").with_prerequisites do
       state("State F")
       state("State G")
     end

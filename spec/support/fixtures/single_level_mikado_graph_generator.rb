@@ -3,7 +3,7 @@
 require "mikado_graph"
 
 MikadoGraph::Generator.define do
-  state("State A").depends_on do
+  state("State A").with_prerequisites do
     state("State B")
     state("State C")
   end
