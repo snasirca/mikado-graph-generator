@@ -2,7 +2,7 @@ require "open3"
 
 RSpec.describe "mikado graph generator" do
   describe "when converting to graphviz" do
-    it "converts single level of dependencies" do
+    it "converts single level of prerequisite dependencies" do
       output, status = run_tool_using("single_level_mikado_graph_generator.rb")
 
       did_not_error(status)
@@ -25,7 +25,7 @@ RSpec.describe "mikado graph generator" do
       )
     end
 
-    it "converts multiple levels of dependencies" do
+    it "converts multiple levels of prerequisite dependencies" do
       output, status = run_tool_using("multi_level_mikado_graph_generator.rb")
 
       did_not_error(status)
