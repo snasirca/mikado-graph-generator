@@ -43,7 +43,7 @@ module MikadoGraph
     def add_dependency(state, dependent_state)
       state_node = graph.add_nodes(state.name)
       dependent_state_node = graph.add_nodes(dependent_state.name)
-      graph.add_edges(dependent_state_node, state_node)
+      graph.add_edges(state_node, dependent_state_node)
     end
 
     def arrange_graph_direction(options)
