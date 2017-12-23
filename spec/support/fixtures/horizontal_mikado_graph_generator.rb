@@ -3,8 +3,8 @@
 require "mikado_graph"
 
 MikadoGraph::Generator.define do
-  state("State A").with_prerequisites do
-    state("State B")
-    state("State C")
+  state("A").with_prerequisites do
+    state("B")
+    state("C")
   end
 end.generate(direction: :horizontal)
