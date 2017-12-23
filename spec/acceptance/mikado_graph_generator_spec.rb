@@ -2,14 +2,14 @@ require "open3"
 
 RSpec.describe "mikado graph generator" do
   describe "when converting to graphviz" do
-    it "converts single level of dependencies" do
+    it "converts single level of prerequisite dependencies" do
       output, status = run_tool_using("single_level_mikado_graph_generator.rb")
 
       did_not_error(status)
       expect(output).to include(
         "shape=box",
-        '"State B" -> "State A"',
-        '"State C" -> "State A"'
+        "A -> B",
+        "A -> C"
       )
     end
 
@@ -20,23 +20,23 @@ RSpec.describe "mikado graph generator" do
       expect(output).to include(
         "shape=box",
         "rankdir=LR",
-        '"State B" -> "State A"',
-        '"State C" -> "State A"'
+        "A -> B",
+        "A -> C"
       )
     end
 
-    it "converts multiple levels of dependencies" do
+    it "converts multiple levels of prerequisite dependencies" do
       output, status = run_tool_using("multi_level_mikado_graph_generator.rb")
 
       did_not_error(status)
       expect(output).to include(
         "shape=box",
-        '"State B" -> "State A"',
-        '"State D" -> "State B"',
-        '"State E" -> "State B"',
-        '"State C" -> "State A"',
-        '"State F" -> "State C"',
-        '"State G" -> "State C"'
+        "A -> B",
+        "B -> D",
+        "B -> E",
+        "A -> C",
+        "C -> F",
+        "C -> G"
       )
     end
   end

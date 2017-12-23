@@ -1,5 +1,5 @@
-# coding: utf-8
 lib = File.expand_path("../lib", __FILE__)
+
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require "mikado_graph/version"
 
@@ -20,12 +20,12 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_development_dependency "bundler", "~> 1.14"
+  spec.add_development_dependency "guard-bundler"
+  spec.add_development_dependency "guard-rspec"
+  spec.add_development_dependency "guard-rubocop"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec", "~> 3.0"
+  spec.add_development_dependency "rubocop", "~> 0.52"
+  spec.add_development_dependency "rubocop-rspec", "~> 1.21"
   spec.add_development_dependency "ruby-graphviz", "~> 1.2"
-  spec.add_development_dependency "rubocop", "~> 0.47"
-  spec.add_development_dependency "rubocop-rspec", "~> 1.10"
-  spec.add_development_dependency "guard-rspec"
-  spec.add_development_dependency "guard-bundler"
-  spec.add_development_dependency "guard-rubocop"
 end
