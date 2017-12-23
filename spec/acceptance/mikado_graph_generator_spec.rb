@@ -8,8 +8,8 @@ RSpec.describe "mikado graph generator" do
       did_not_error(status)
       expect(output).to include(
         "shape=box",
-        'A -> B',
-        'A -> C'
+        "A -> B",
+        "A -> C"
       )
     end
 
@@ -20,8 +20,8 @@ RSpec.describe "mikado graph generator" do
       expect(output).to include(
         "shape=box",
         "rankdir=LR",
-        'A -> B',
-        'A -> C'
+        "A -> B",
+        "A -> C"
       )
     end
 
@@ -31,12 +31,12 @@ RSpec.describe "mikado graph generator" do
       did_not_error(status)
       expect(output).to include(
         "shape=box",
-        'A -> B',
-        'B -> D',
-        'B -> E',
-        'A -> C',
-        'C -> F',
-        'C -> G'
+        "A -> B",
+        "B -> D",
+        "B -> E",
+        "A -> C",
+        "C -> F",
+        "C -> G"
       )
     end
   end
