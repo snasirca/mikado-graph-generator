@@ -1,20 +1,18 @@
 module MikadoGraph
   class State
-    attr_reader :name
+    attr_reader :name, :prerequisite_states
 
     def initialize(name)
       @name = name
+      @prerequisite_states = []
     end
 
-    def depends_on(&block)
-      dependencies = Dependencies.new
-      dependencies.instance_eval(&block)
-      @dependent_states = dependencies.dependent_states
+    def with_prerequisites(&block)
+      prerequisites = Prerequisites.new
+      prerequisites.instance_eval(&block)
+      @prerequisite_states = prerequisites.states
     end
-
-    def dependent_states
-      @dependent_states || []
-    end
+    alias with_prereqs with_prerequisites
 
     def to_s
       name

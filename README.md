@@ -1,4 +1,4 @@
-# Mikado Graph Generator [![Build Status](https://travis-ci.org/snasirca/mikado_graph_generator.svg?branch=master)](https://travis-ci.org/snasirca/mikado_graph_generator) [![Code Climate](https://codeclimate.com/github/snasirca/mikado_graph_generator/badges/gpa.svg)](https://codeclimate.com/github/snasirca/mikado_graph_generator)
+# Mikado Graph Generator [![Build Status](https://travis-ci.org/snasirca/mikado-graph-generator.svg?branch=master)](https://travis-ci.org/snasirca/mikado-graph-generator) [![Maintainability](https://api.codeclimate.com/v1/badges/d748f762abb3995c15eb/maintainability)](https://codeclimate.com/github/snasirca/mikado-graph-generator/maintainability)
 
 Welcome to a DSL for creating Mikado Graphs using *GraphViz*.
 
@@ -20,7 +20,7 @@ Or install it yourself as:
 
 ### Prerequisites
 
-Ensure you have *GraphViz* installed. On macOS you can install it using Homebrew with the following command:
+Ensure you have *GraphViz* installed. On MacOS you can install it using Homebrew with the following command:
 
 ```bash
 brew install graphviz
@@ -34,18 +34,21 @@ You can use this gem's DSL in the following way to create a Mikado Graph generat
 require "mikado_graph"
 
 MikadoGraph::Generator.define do
-  state("State A").depends_on do
-    state("State B").depends_on do
+  state("State A").with_prerequisites do
+    state("State B").with_prerequisites do
       state("State D")
       state("State E")
     end
-    state("State C").depends_on do
+    state("State C").with_prerequisites do
       state("State F")
       state("State G")
     end
   end
 end.generate("png", "img/example_usage_vertical.png") # generate takes GraphViz format and output path
 ```
+
+> You can also use the shorthand `with_prereqs` instead of `with_prerequisites` for defining prerequisite 
+dependencies between states.
 
 Save this file to `example_usage_vertical.rb` and then you can then execute this file in the terminal using:
 
@@ -55,7 +58,7 @@ ruby example_usage_vertical.rb
 
 This will utilize *GraphViz* to create this PNG output of the above Mikado Graph generator definition:
 
-![Example Usage Vertical](https://github.com/snasirca/mikado_graph_generator/blob/master/img/example_usage_vertical.png)
+![Example Usage Vertical](img/example_usage_vertical.png)
 
 NOTE: If you don't provide any parameters to `generate`, it'll default to a `dot` output in the STDOUT.
 
@@ -71,12 +74,12 @@ Here is an example usage:
 require "mikado_graph"
 
 MikadoGraph::Generator.define do
-  state("State A").depends_on do
-    state("State B").depends_on do
+  state("State A").with_prerequisites do
+    state("State B").with_prerequisites do
       state("State D")
       state("State E")
     end
-    state("State C").depends_on do
+    state("State C").with_prerequisites do
       state("State F")
       state("State G")
     end
@@ -86,7 +89,7 @@ end.generate(format: "png", path: "img/example_usage_horizontal.png", direction:
 
 This will generate this graph:
 
-![Example Usage Horizontal](https://github.com/snasirca/mikado_graph_generator/blob/master/img/example_usage_horizontal.png)
+![Example Usage Horizontal](img/example_usage_horizontal.png)
 
 ## Development
 
