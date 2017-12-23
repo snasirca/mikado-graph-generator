@@ -58,7 +58,7 @@ ruby example_usage_vertical.rb
 
 This will utilize *GraphViz* to create this PNG output of the above Mikado Graph generator definition:
 
-![Example Usage Vertical](https://github.com/snasirca/mikado_graph_generator/blob/master/img/example_usage_vertical.png)
+![Example Usage Vertical](img/example_usage_vertical.png)
 
 NOTE: If you don't provide any parameters to `generate`, it'll default to a `dot` output in the STDOUT.
 
@@ -89,7 +89,7 @@ end.generate(format: "png", path: "img/example_usage_horizontal.png", direction:
 
 This will generate this graph:
 
-![Example Usage Horizontal](https://github.com/snasirca/mikado_graph_generator/blob/master/img/example_usage_horizontal.png)
+![Example Usage Horizontal](img/example_usage_horizontal.png)
 
 ## Development
 
