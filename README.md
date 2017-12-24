@@ -20,7 +20,7 @@ Or install it yourself as:
 
 ### Prerequisites
 
-Ensure you have *GraphViz* installed. On MacOS you can install it using Homebrew with the following command:
+Ensure you have *GraphViz* installed. On macOS you can install it using Homebrew with the following command:
 
 ```bash
 brew install graphviz
