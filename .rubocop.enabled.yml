@@ -13,7 +13,7 @@ require: rubocop-rspec
 #   variable = if true
 #   end
 #
-Lint/EndAlignment:
+Layout/EndAlignment:
   EnforcedStyleAlignWith: variable
 
 #
