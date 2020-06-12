@@ -34,7 +34,7 @@ Metrics/BlockLength:
 #
 # This cop checks the length of lines in the source code.
 #
-Metrics/LineLength:
+Layout/LineLength:
   Max: 140
 
 #
@@ -86,7 +86,7 @@ RSpec/NotToNot:
 # Check that the keys, separators, and values of a multi-line hash literal are aligned according
 # to configuration. With 'key' everything is left aligned.
 #
-Layout/AlignHash:
+Layout/HashAlignment:
   EnforcedHashRocketStyle: key
   EnforcedColonStyle: key
   EnforcedLastArgumentHashStyle: always_ignore
@@ -94,7 +94,7 @@ Layout/AlignHash:
 #
 # Here we check if the parameters on a multi-line method call or definition are aligned.
 #
-Layout/AlignParameters:
+Layout/ParameterAlignment:
   EnforcedStyle: with_fixed_indentation
 
 #

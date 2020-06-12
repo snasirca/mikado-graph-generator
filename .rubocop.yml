@@ -2,8 +2,8 @@
 # The Rubocop configuration for mikado_graph_generator
 #
 
-#AllCops:
-#  Exclude:
+AllCops:
+  NewCops: enable
 
 inherit_from:
   - .rubocop.disabled.yml
