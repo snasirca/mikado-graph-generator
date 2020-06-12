@@ -1,6 +1,6 @@
 language: ruby
 rvm:
-  - 2.4.0
+  - 2.6.6
 before_install:
   - gem update --system
   - sudo apt-get -qq update
