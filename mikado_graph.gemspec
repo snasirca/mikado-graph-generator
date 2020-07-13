@@ -19,7 +19,9 @@ Gem::Specification.new do |spec|
   end
   spec.require_paths = ["lib"]
 
-  spec.add_development_dependency "bundler", "~> 2.1.4"
+  # TODO: Bring this back when Dependabot supports bundler v2
+  # https://github.com/dependabot/dependabot-core/issues/2018
+  # spec.add_development_dependency "bundler", "~> 2.1.4"
   spec.add_development_dependency "guard-bundler"
   spec.add_development_dependency "guard-rspec"
   spec.add_development_dependency "guard-rubocop"

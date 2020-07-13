@@ -91,7 +91,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bundler (~> 2.1.4)
   guard-bundler
   guard-rspec
   guard-rubocop
