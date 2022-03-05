@@ -19,6 +19,7 @@ Gem::Specification.new do |spec|
   end
   spec.require_paths = ["lib"]
 
+  spec.required_ruby_version = ">= 2.7.5"
   spec.add_runtime_dependency "ruby-graphviz", "~> 1.2", ">= 1.2.5"
 
   spec.add_development_dependency "bump", "~> 0", ">= 0.10"
