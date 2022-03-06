@@ -2,9 +2,7 @@
 # The Rubocop configuration for mikado_graph_generator
 #
 
-AllCops:
-  NewCops: enable
+require: standard
 
-inherit_from:
-  - .rubocop.disabled.yml
-  - .rubocop.enabled.yml
+inherit_gem:
+  standard: config/base.yml
