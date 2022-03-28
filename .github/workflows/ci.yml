@@ -7,13 +7,24 @@ on:
     branches: [ main ]
 
 jobs:
-  test:
-
+  linter:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup Graphviz
+      uses: ts-graphviz/setup-graphviz@v1
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: 3.1
+        bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+    - name: Run rubocop
+      run: bundle exec rubocop
+  specs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        ruby-version: ['2.7']
-
+        ruby-version: ['2.7', '3.1']
     steps:
     - uses: actions/checkout@v2
     - name: Setup Graphviz
@@ -23,7 +34,5 @@ jobs:
       with:
         ruby-version: ${{ matrix.ruby-version }}
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
-    - name: Run rubocop
-      run: bundle exec rubocop
     - name: Run tests
       run: bundle exec rspec
