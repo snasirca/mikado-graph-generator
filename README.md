@@ -1,4 +1,4 @@
-# Mikado Graph Generator [![Gem Version](https://badge.fury.io/rb/mikado_graph_generator.svg)](https://badge.fury.io/rb/mikado_graph_generator) [![Build Status](https://travis-ci.org/snasirca/mikado-graph-generator.svg?branch=master)](https://travis-ci.org/snasirca/mikado-graph-generator) [![Maintainability](https://api.codeclimate.com/v1/badges/d748f762abb3995c15eb/maintainability)](https://codeclimate.com/github/snasirca/mikado-graph-generator/maintainability)
+# Mikado Graph Generator [![Gem Version](https://badge.fury.io/rb/mikado_graph_generator.svg)](https://badge.fury.io/rb/mikado_graph_generator) [![Build Status](https://github.com/snasirca/mikado-graph-generator/actions/workflows/ci.yml/badge.svg)](https://github.com/snasirca/mikado-graph-generator/actions/workflows/ci.yml) [![Maintainability](https://api.codeclimate.com/v1/badges/d748f762abb3995c15eb/maintainability)](https://codeclimate.com/github/snasirca/mikado-graph-generator/maintainability)
 
 Welcome to a DSL for creating Mikado Graphs using *GraphViz*.
 

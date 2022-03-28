@@ -12,7 +12,8 @@ module MikadoGraph
       prerequisites.instance_eval(&block)
       @prerequisite_states = prerequisites.states
     end
-    alias with_prereqs with_prerequisites
+
+    alias_method :with_prereqs, :with_prerequisites
 
     def to_s
       name

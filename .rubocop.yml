@@ -2,7 +2,14 @@
 # The Rubocop configuration for mikado_graph_generator
 #
 
-require: standard
+require:
+  - standard
+  - rubocop-rake
 
 inherit_gem:
   standard: config/base.yml
+
+AllCops:
+  NewCops: enable
+  Exclude:
+    - 'vendor/**/*'
