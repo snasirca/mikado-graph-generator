@@ -20,16 +20,16 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.required_ruby_version = ">= 2.7.5"
-  spec.add_runtime_dependency "ruby-graphviz", "~> 1.2", ">= 1.2.5"
+  spec.add_runtime_dependency "ruby-graphviz", "~> 1.2"
 
-  spec.add_development_dependency "bump", "~> 0"
-  spec.add_development_dependency "rake", "~> 13"
-  spec.add_development_dependency "rspec", "~> 3"
-  spec.add_development_dependency "rubocop", "~> 1"
-  spec.add_development_dependency "standard", "~> 1"
-  spec.add_development_dependency "standardrb", "~> 1"
-  spec.add_development_dependency "rubocop-rspec", "~> 2"
-  spec.add_development_dependency "rubocop-rake", "~> 0"
+  spec.add_development_dependency "bump", "~> 0.10"
+  spec.add_development_dependency "rake", "~> 13.1"
+  spec.add_development_dependency "rspec", "~> 3.12"
+  spec.add_development_dependency "rubocop", "~> 1.58"
+  spec.add_development_dependency "standard", "~> 1.33"
+  spec.add_development_dependency "standardrb", "~> 1.0"
+  spec.add_development_dependency "rubocop-rspec", "~> 2.25"
+  spec.add_development_dependency "rubocop-rake", "~> 0.6"
 
   spec.requirements << "GraphViz (https://graphviz.org)"
 end
