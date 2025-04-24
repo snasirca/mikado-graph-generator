@@ -28,7 +28,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rubocop", "~> 1.58"
   spec.add_development_dependency "standard", "~> 1.33"
   spec.add_development_dependency "standardrb", "~> 1.0"
-  spec.add_development_dependency "rubocop-rspec", "~> 2.25"
+  spec.add_development_dependency "rubocop-rspec", "~> 3.6"
   spec.add_development_dependency "rubocop-rake", "~> 0.6"
 
   spec.requirements << "GraphViz (https://graphviz.org)"
